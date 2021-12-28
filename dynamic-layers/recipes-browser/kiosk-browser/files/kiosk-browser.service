@@ -1,0 +1,11 @@
+[Unit]
+Description=Chessboard Startup Service
+After=chessboard-api-init.service
+
+[Service]
+Type=simple
+ExecStart=kiosk-browser KIOSK_BROWSER_URL
+ExecStop=killall kiosk-browser
+
+[Install]
+WantedBy=multi-user.target
