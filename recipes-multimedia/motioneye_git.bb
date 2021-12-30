@@ -7,17 +7,15 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=4fe869ee987a340198fb0d54c55c47f1"
 S = "${WORKDIR}/git"
 
 SRC_URI = " \
-    git://github.com/Mictronics/motioneye.git;branch=python3;protocol=https \
+    git://github.com/ccrisan/motioneye.git;branch=master;protocol=https \
     file://0001-remove-init-functions-dependency.patch \
-    file://0003-various-fixes.patch \
-    file://motioneye.conf \
     "
 # file://0002-replace-asynchronous-with-coroutine.patch
 # file://0004-fix-popen.patch
 
-SRCREV = "ddc2435cb4266798d31e2d370a48db309672a966"
+SRCREV = "0.42.1"
 
-inherit setuptools3
+inherit setuptools
 
 DEPENDS += ""
 
@@ -28,17 +26,18 @@ RDEPENDS:${PN} += " \
     libjpeg-turbo \
     bash \
     motion \
-    curl \
     lsb-release \
-    python3-pillow \
-    python3-tornado \
-    python3-jinja2 \
-    python3-pycurl \
-    python3-multiprocessing \
-    python3-six \
-    python3-dateutil \
-    python3-fcntl \
-    python3-setuptools \
+    python-pillow \
+    python-tornado \
+    python-jinja2 \
+    python-pycurl \
+    python-multiprocessing \
+    python-six \
+    python-dateutil \
+    python-fcntl \
+    python-pkg-resources \
+    python-plistlib \
+    python-argparse \
     "
 # mariadb
 FILES:{PN} += "/usr/share/motioneye/*"
@@ -55,7 +54,7 @@ do_install:append() {
         install -Dm 755 ${D}/usr/share/motioneye/extra/motioneye.init-debian ${D}${INIT_D_DIR}/motioneye
     fi
 
-    install -Dm 644 ${WORKDIR}/motioneye.conf ${D}/etc/motioneye/motioneye.conf
+    install -Dm 644 ${D}/usr/share/motioneye/extra/motioneye.conf.sample ${D}/etc/motioneye/motioneye.conf
 
     install -d ${D}/var/lib/motioneye
 }
