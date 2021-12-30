@@ -1,0 +1,39 @@
+diff --git a/motioneye/mjpgclient.py b/motioneye/mjpgclient.py
+index e100e8d..16b25ac 100755
+--- a/motioneye/mjpgclient.py
++++ b/motioneye/mjpgclient.py
+@@ -23,7 +23,7 @@ import socket
+ import time
+ 
+ from tornado.ioloop import IOLoop
+-from tornado.iostream import IOStream
++from tornado.iostream import IOStream, StreamClosedError
+ 
+ from motioneye import config
+ from motioneye import motionctl
+@@ -133,7 +133,7 @@ class MjpgClient(IOStream):
+ 
+     def _on_connect(self, future):
+         exc = future.exception()
+-        if exc is not None and not isinstance(exc, IOStream.StreamClosedError):
++        if exc is not None and not isinstance(exc, StreamClosedError):
+             future.result()
+ 
+         logging.debug('mjpg client for camera %(camera_id)s connected on port %(port)s' % {
+@@ -150,6 +150,7 @@ class MjpgClient(IOStream):
+             self.write(b'GET /%d/stream HTTP/1.1\r\n\r\n' % self._camera_id)
+ 
+         else:  # no authentication
++            print("INSTANCE:", type(exc))
+             self.write(b'GET /%d/stream HTTP/1.1\r\nConnection: close\r\n\r\n' % self._camera_id)
+ 
+         self._seek_http()
+@@ -252,7 +253,7 @@ class MjpgClient(IOStream):
+         self._last_jpg_times.append(time.time())
+         while len(self._last_jpg_times) > self._FPS_LEN:
+             self._last_jpg_times.pop(0)
+-    
++
+         self._seek_content_length()
+ 
+ 
