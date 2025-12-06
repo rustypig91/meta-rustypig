@@ -1,0 +1,1 @@
+SUBSYSTEM=="graphics", KERNEL=="FBDEV", TAG+="systemd", ENV{SYSTEMD_WANTS}+="fbsplash.service"

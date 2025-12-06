@@ -1,0 +1,10 @@
+[Unit]
+Description=Display splash image on framebuffer using fbida
+DefaultDependencies=no
+After=dev-FBDEV.device
+Wants=dev-FBDEV.device
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/fbi -d /dev/FBDEV -noverbose /usr/share/fbsplash/LOGO
+RemainAfterExit=yes
