@@ -1,0 +1,45 @@
+diff --git a/subprojects/abseil-cpp.wrap b/subprojects/abseil-cpp.wrap
+index 18b5a1d..e21bfe3 100644
+--- a/subprojects/abseil-cpp.wrap
++++ b/subprojects/abseil-cpp.wrap
+@@ -1,10 +1,10 @@
+ [wrap-file]
+-directory = abseil-cpp-20240722.0
+-source_url = https://github.com/abseil/abseil-cpp/releases/download/20240722.0/abseil-cpp-20240722.0.tar.gz
+-source_filename = abseil-cpp-20240722.0.tar.gz
++directory = abseil-cpp-20250814.1
++source_url = https://github.com/abseil/abseil-cpp/releases/download/20250814.1/abseil-cpp-20250814.1.tar.gz
++source_filename = abseil-cpp-20250814.1.tar.gz
+ source_hash = f50e5ac311a81382da7fa75b97310e4b9006474f9560ac46f54a9967f07d4ae3
+-patch_directory = abseil-cpp-20240722.0
+-source_fallback_url = https://github.com/mesonbuild/wrapdb/releases/download/abseil-cpp_20240722.0-3/abseil-cpp-20240722.0.tar.gz
++patch_directory = abseil-cpp-20250814.1
++source_fallback_url = https://github.com/mesonbuild/wrapdb/releases/download/abseil-cpp_20250814.1-3/abseil-cpp-20250814.1.tar.gz
+ 
+ [provide]
+ absl_base = absl_base_dep
+diff --git a/subprojects/eigen.wrap b/subprojects/eigen.wrap
+index becc476..d2056c3 100644
+--- a/subprojects/eigen.wrap
++++ b/subprojects/eigen.wrap
+@@ -1,13 +1,13 @@
+ [wrap-file]
+-directory = eigen-3.4.0
+-source_url = https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.bz2
+-source_filename = eigen-3.4.0.tar.bz2
++directory = eigen-3.4.1
++source_url = https://gitlab.com/libeigen/eigen/-/archive/3.4.1/eigen-3.4.1.tar.bz2
++source_filename = eigen-3.4.1.tar.bz2
+ source_hash = b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626
+-patch_filename = eigen_3.4.0-2_patch.zip
+-patch_url = https://wrapdb.mesonbuild.com/v2/eigen_3.4.0-2/get_patch
++patch_filename = eigen_3.4.1-2_patch.zip
++patch_url = https://wrapdb.mesonbuild.com/v2/eigen_3.4.1-2/get_patch
+ patch_hash = cb764fd9fec02d94aaa2ec673d473793c0d05da4f4154c142f76ef923ea68178
+-source_fallback_url = https://github.com/mesonbuild/wrapdb/releases/download/eigen_3.4.0-2/eigen-3.4.0.tar.bz2
+-wrapdb_version = 3.4.0-2
++source_fallback_url = https://github.com/mesonbuild/wrapdb/releases/download/eigen_3.4.1-2/eigen-3.4.1.tar.bz2
++wrapdb_version = 3.4.1-2
+ 
+ [provide]
+ eigen3 = eigen_dep
