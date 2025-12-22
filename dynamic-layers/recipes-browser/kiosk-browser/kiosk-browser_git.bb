@@ -20,6 +20,8 @@ RDEPENDS:${PN} += "qtwebkit"
 
 KIOSK_BROWSER_URL ?= "http://example.com"
 
+SYSTEMD_SERVICE:${PN} = "kiosk-browser.service"
+
 do_install:append() {
     install -d ${D}${systemd_system_unitdir}
     install -m 0644 ${UNPACKDIR}/kiosk-browser.service ${D}${systemd_system_unitdir}/
