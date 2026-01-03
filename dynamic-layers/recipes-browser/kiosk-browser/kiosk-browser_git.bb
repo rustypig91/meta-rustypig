@@ -5,7 +5,7 @@ LICENSE = "GPL-3.0-or-later"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 SRC_URI = "git://github.com/rustypig91/kiosk-browser.git;branch=main;protocol=https"
-SRCREV = "9115eb9fd288e09b5b8893f6060adac65982e5d9"
+SRCREV = "efae0f3c8b185bc7e33288f5e8ae8a1c71d7433e"
 
 SRC_URI += " \
     file://kiosk-browser.service \
