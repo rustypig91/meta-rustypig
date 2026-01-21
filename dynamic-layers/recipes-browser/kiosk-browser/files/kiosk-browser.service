@@ -12,10 +12,11 @@ KillMode=control-group
 Environment=DISPLAY=:0 QT_QPA_PLATFORM=linuxfb:fb=/dev/fb1:nographicsmodeswitch=1
 ExecStart=/bin/sh -c '\
     URL="KIOSK_BROWSER_URL"; \
-    check() { wget --spider -q --timeout=2 "$URL" > /dev/null 2>&1; }; \
+    FLAGS="KIOSK_BROWSER_FLAGS"; \
+    check() { wget --spider -q --timeout=2 --no-check-certificate "$URL" > /dev/null 2>&1; }; \
     until check; do sleep 1; done; \
     while true; do \
-        kiosk-browser "$URL" & pid=$!; \
+        kiosk-browser "$URL" $FLAGS & pid=$!; \
         while check && kill -0 "$pid" 2>/dev/null; do sleep 2; done; \
         kill -TERM "$pid" 2>/dev/null; wait "$pid" 2>/dev/null; \
         until check; do sleep 1; done; \

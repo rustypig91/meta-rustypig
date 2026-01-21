@@ -1,11 +1,11 @@
-SUMMARY = "Kiosk browser based on Qt6"
-DESCRIPTION = "A simple kiosk web browser using Qt6 WebEngine."
-HOMEPAGE = "https://github.com/44670/FBrowser"
+SUMMARY = "Kiosk browser based on Qt5"
+DESCRIPTION = "A simple kiosk web browser using Qt5 WebKit."
+HOMEPAGE = "https://github.com/rustypig91/kiosk-browser"
 LICENSE = "GPL-3.0-or-later"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
 SRC_URI = "git://github.com/rustypig91/kiosk-browser.git;branch=main;protocol=https"
-SRCREV = "efae0f3c8b185bc7e33288f5e8ae8a1c71d7433e"
+SRCREV = "ca90e34288230d178821fe86da341c5866284f00"
 
 SRC_URI += " \
     file://kiosk-browser.service \
@@ -19,6 +19,7 @@ DEPENDS += "qtwebkit qttools-native xkeyboard-config"
 RDEPENDS:${PN} += "qtwebkit"
 
 KIOSK_BROWSER_URL ?= "http://example.com"
+KIOSK_BROWSER_FLAGS ?= ""
 
 SYSTEMD_SERVICE:${PN} = "kiosk-browser.service"
 
@@ -27,6 +28,7 @@ do_install:append() {
     install -m 0644 ${UNPACKDIR}/kiosk-browser.service ${D}${systemd_system_unitdir}/
 
     sed -i 's|KIOSK_BROWSER_URL|'"${KIOSK_BROWSER_URL}"'|g' ${D}${systemd_system_unitdir}/kiosk-browser.service
+    sed -i 's|KIOSK_BROWSER_FLAGS|'"${KIOSK_BROWSER_FLAGS}"'|g' ${D}${systemd_system_unitdir}/kiosk-browser.service
 }
 
 FILES:${PN} += " \
